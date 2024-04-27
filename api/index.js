@@ -94,3 +94,5 @@ app.use(errorHandler)
 app.listen(port,()=>{
   console.log('mi port '+port)
 })
+
+module.exports = app
