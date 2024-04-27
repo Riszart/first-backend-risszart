@@ -7,7 +7,7 @@ const routerApi = require('./routers')
 const {logErrors, errorHandler, boomErrorHandler} = require('./middlewares/errorHandler')   // los middleware de tipo error se deben hacer despues del router
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000 // para vercel debemos colocar la variable de ambiente
 
 app.use(express.json())  // middleware se usa para poder enviar informacion en formato json
 
@@ -23,11 +23,11 @@ const options = {                     //  controlara a que url data acceso a la 
 }
 app.use(cors()) //  si solo se pone esto se dara permiso a la app a todos --(1)
 
-app.get('/',(req,res)=>{
+app.get('/api',(req,res)=>{
   res.send('hola mi server en express')
 })
 
-app.get('/nueva-ruta',(req,res)=>{
+app.get('/api/nueva-ruta',(req,res)=>{
   res.send('hola, soy nueva ruta')  //enviamos un string al frontend
 })
 
